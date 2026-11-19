@@ -1,136 +1,219 @@
 <!doctype html>
 <html>
-  <head>
-    <!-- Page setup -->
-    <meta charset="utf-8">
-    <title>Exhibition Website</title>
-    <meta name="description" content="A brief description of your site for search engines">
-    <meta name="author" content="Information about the author here">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <link rel="icon" type="image/png" href="favicon.png">
-  
-    <!-- Stylesheets -->
-    <!-- Reset default styles and add support for google fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css" />
-    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
-   
-    <!-- Custom styles -->
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <link href="flexbox1.css" rel="stylesheet">
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>    
-
-    <!-- Want to add Bootstrap? -->
-    <!-- Visit: https://getbootstrap.com/docs/4.3/getting-started/introduction/ -->
-    
-  </head>
-  
-  <body>
-
-    <header id="header">
-
-      <h1>Exhibition Website</h1>
-      
-      <!-- Menu link fragment #id should match a div id. Example: <a href="#home"> links to <div id="home"></div>  -->
-      <ul class="main-menu">
-        <li><a href="#home">home</a></li>
-        <li><a href="#about">about</a></li>
-        <li><a href="#contact">contact</a></li>
-      </ul>
-    </header>
-
-    <div id="container">
-      <div class="inner">
-        <div id="content"> 
-
-          <div id="home" class="content-region hide">
-            <h2>Home</h2>
-            <p>
-              This is a simple website template published with Github Pages. <a href="https://github.com/zirafa/simple-website-template">Fork this repository</a> to create your own site!
-            </p>
-            - var blocks = 16;
-- var title = ["The Color Chucknorris", "The Phisherman and His Wife", "The Little Browser Engine That Couldn’t", "The DOM-Tree", "Sliding Into Auto-DMs", "Copying and Pasting from Stack Overflow","WordPress Updates Breaking Stuff","Waiting for Internet Explorer to Die","Copypaste Customer Support","Catchy Clickbait Titles and Buzzwords","Spamming with Scrapebox"];
-- var bookStart = 6;
-- var dummyText = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
-
-mixin bookTitle(t)
-  - if (t >= bookStart && t < bookStart + title.length) {
-    .spine=title[t - bookStart]
-  - }
-  
-mixin divBlock(d)
-  div(class="block b" + d)
-    .block-inner
-      .back
-      .bottom
-      .front
-      .left
-      .right
-      .top
-
-mixin labelBlock(l)
-  - var bookId = l - bookStart;
-  label(for="book" + (bookId + 1),class="block b" + l)
-    .block-inner
-      .back
-      .bottom
-      .front
-        +bookTitle(l)
-      .left
-      .right(data-title=title[bookId])
-        .cover
-        .contents
-          h1="Chapter 1"
-          p=dummyText
-      .top
-
-form.container
-  - for (var r = 1; r <= title.length; ++r) {
-    input(type="radio",name="title",id="book" + r)
-  - }
-  .surface
-    - for (var b = 1;b <= blocks;++b) {
-      - if (b >= bookStart && b < bookStart + title.length) {
-        +labelBlock(b)
-      - }
-      - else {
-        +divBlock(b)
-      - }
-    - }
-  input(type="reset",value="Return")
-            <div class = "container1">
-              <img class= "item" src="cat1.jpg" alt="cute cat with collar" style="width: 240px; height: 180px;">
-              <img class= "item" src="cat2.jpg" alt="cute cat with hat" style="width: 240px; height: 180px;">
-
+  <nav>
+        <div class="nav-container">
+            <a href="#top" class="logo">LOUVRE</a>
+            <ul class="nav-links">
+                <li><a href="#visit">Visit</a></li>
+                <li><a href="#exhibitions">Exhibitions</a></li>
+                <li><a href="#explore">Explore</a></li>
+                <li><a href="#collection">Collection</a></li>
+            </ul>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-secondary">Language</a>
+                <a href="#" class="btn btn-primary">Tickets</a>
             </div>
-            
-          </div>
-          
-          <div id="about" class="content-region hide">
-            <h2>About</h2>
-            <p>
-              Sed tempus urna et pharetra pharetra massa massa ultricies. Porttitor rhoncus dolor purus non enim praesent. Id aliquet risus feugiat in ante metus dictum. 
-            </p>
-          </div>
-          
-          <div id="contact" class="content-region hide">
-            <h2>Contact</h2>
-            <p>
-              Pellentesque nec nam aliquam sem et tortor consequat. Quisque sagittis purus sit amet volutpat consequat. Magna eget est lorem ipsum dolor. 
-            </p>
-          </div>
-          
         </div>
-      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <!-- id="top" added so the logo anchor has a target -->
+    <section class="hero" id="top" style="max-width:100%; padding:0; margin-top:90px;">
+        <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1600" alt="Louvre Museum" class="hero-image">
+        <div class="hero-overlay">
+            <h1>Welcome to the Louvre</h1>
+            <p class="museum-status">The museum is open today</p>
+            <p class="museum-hours">9:00 AM – 9:00 PM</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Book a Ticket</a>
+                <!-- CHANGE 2: "Prepare Your Visit" now uses btn-primary instead of btn-secondary -->
+                <a href="#" class="btn btn-primary">Prepare Your Visit</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section id="exhibitions">
+        <h2 class="section-title fade-in">Highlights</h2>
+        <div class="highlights-grid">
+            <div class="highlight-card fade-in">
+                <img src="https://static01.nyt.com/images/2012/07/27/arts/27SUBALBERS/27SUBALBERS-superJumbo.jpg" alt="Exhibition">
+                <div class="highlight-overlay">
+                    <p class="highlight-category">Exhibition</p>
+                    <h3 class="highlight-title">Josef Albers</h3>
+                    <p class="highlight-description">15 October 2025 – 26 January 2026</p>
+                </div>
+            </div>
+            <div class="highlight-card fade-in">
+                <img src="https://www.artic.edu/iiif/2/1ff6d8fe-5cc0-f7b4-5af5-870df19f0330/full/843,/0/default.jpg" alt="Drawings">
+                <div class="highlight-overlay">
+                    <p class="highlight-category">Exhibition</p>
+                    <h3 class="highlight-title">Balthus Drawings</h3>
+                    <p class="highlight-description">5 November 2025 – 2 February 2026</p>
+                </div>
+            </div>
+            <div class="highlight-card fade-in">
+                <img src="https://collectionapi.metmuseum.org/api/collection/v1/iiif/485406/1005024/restricted" alt="Drawing Activity">
+                <div class="highlight-overlay">
+                    <p class="highlight-category">Family</p>
+                    <h3 class="highlight-title">Pablo Picasso</h3>
+                    <p class="highlight-description">Self-guided drawing activities inspired by artworks</p>
+                </div>
+            </div>
+            <div class="highlight-card fade-in">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/La_Libert%C3%A9_guidant_le_peuple_-_Eug%C3%A8ne_Delacroix_-_Mus%C3%A9e_du_Louvre_Peintures_RF_129_-_apr%C3%A8s_restauration_2024.jpg/1280px-La_Libert%C3%A9_guidant_le_peuple_-_Eug%C3%A8ne_Delacroix_-_Mus%C3%A9e_du_Louvre_Peintures_RF_129_-_apr%C3%A8s_restauration_2024.jpg" alt="Mona Lisa">
+                <div class="highlight-overlay">
+                    <p class="highlight-category">Visitor Trail</p>
+                    <h3 class="highlight-title">Eugene Delacroix</h3>
+                    <p class="highlight-description">What exactly is a masterpiece?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <div class="video-section">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <h2 class="section-title" style="color: white;">Louvre+</h2>
+            <div class="video-grid">
+                <div class="video-card fade-in">
+                    <img src="https://www.guggenheim.org/wp-content/uploads/1962/01/64.1700_ph_web-1.jpg" alt="Video" class="video-thumbnail">
+                    <div class="video-info">
+                        <h3 class="video-title">The Legendary Painters</h3>
+                        <p class="video-duration">Exhibition · 10/03/2026</p>
+                    </div>
+                </div>
+                <div class="video-card fade-in">
+                    <img src="https://www.artviva.com/wp-content/uploads/2019/02/Andrea-del-Sarto-Madonna-of-the-Harpies-Uffizi-Gallery-Florence-Italy-1024x512.jpg" alt="Video" class="video-thumbnail">
+                    <div class="video-info">
+                        <h3 class="video-title">Andrea del Sarto</h3>
+                        <p class="video-duration">Show · 16/06/2026</p>
+                    </div>
+                </div>
+                <div class="video-card fade-in">
+                    <img src="https://d2w8kbdekdi1gv.cloudfront.net/eyJidWNrZXQiOiAiYXJ0ZXJhLWltYWdlcy1idWNrZXQiLCAia2V5IjogImFydHdvcmtzLzQ2NjNjN2QyLWE5NDUtNGJjNy05NWY1LWI3NjNhNzc0MWFjZC80NjYzYzdkMi1hOTQ1LTRiYzctOTVmNS1iNzYzYTc3NDFhY2RfZnVsbC5qcGciLCAiZWRpdHMiOiB7InJlc2l6ZSI6IHsid2lkdGgiOiAxOTIwLCAiaGVpZ2h0IjogMTkyMCwgImZpdCI6ICJpbnNpZGUifX19" alt="Video" class="video-thumbnail">
+                    <div class="video-info">
+                        <h3 class="video-title">Abstract Art</h3>
+                        <p class="video-duration">Exhibition · 17/03/2026</p>
+                    </div>
+                </div>
+                <div class="video-card fade-in">
+                    <img src="https://www.thebroad.org/sites/default/files/styles/webp_convert_only/public/art/basquiat_untitled.jpg.webp?itok=2ev8K24x" alt="Video" class="video-thumbnail">
+                    <div class="video-info">
+                        <h3 class="video-title">Basquiat's Biggest Hits</h3>
+                        <p class="video-duration">Exhibition · 10/03/2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <footer>  
-      Footer region
+    <!-- Gallery Section -->
+    <section id="explore">
+        <h2 class="section-title fade-in">Delve into the Louvre</h2>
+        <div class="gallery">
+            <div class="gallery-item fade-in">
+                <img src="https://ichef.bbci.co.uk/images/ic/480xn/p0dwqy91.jpg.webp" alt="Artwork">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://sonyawinner.com/wp-content/uploads/2025/01/Frida-Kahlo-Tree-of-Hope-Remain-Strong-.jpg" alt="Artwork">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://kehindewiley.com/wp-content/uploads/2022/09/obama_cover-760x557.jpg" alt="Artwork">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://galeriemontblanc.com/cdn/shop/articles/original_d14a07c5-d6fc-4f3d-b4fd-3ce9c3e99f63.jpg?v=1679238974" alt="Artwork">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://media-icamiami-org.imgix.net/2019/09/9b064c67-yayoi-kusama-all-the-eternal-love-i-have-for-the-pumpkins-detail-2016.jpg?auto=compress,format&cs=srgb" alt="Artwork">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://www.blackmountaincollege.org/wp-content/uploads/Jacob-Lawrence-Ices-I-AR.jpg" alt="Artwork">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://www.singulart.com/blog/wp-content/uploads/2023/11/Bearden.jpg" alt="Artwork">
+            </div>
+            <div class="gallery-item fade-in">
+                <img src="https://i.guim.co.uk/img/media/bcb744237b322b6530a0677901f5ccb3a41cd8f4/59_42_4203_5055/master/4203.jpg?width=445&dpr=1&s=none&crop=none" alt="Artwork">
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section>
+        <h2 class="section-title fade-in">On Instagram</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: var(--warm-grey); font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase;">Share your photos under #museedulouvre</p>
+        <div class="instagram-grid">
+            <div class="instagram-item fade-in">
+                <img src="https://assets.vogue.com/photos/67ff48866cdb29869cc19903/master/w_2560%2Cc_limit/WMAA86871_A_Midsummer_Afternoon_Dream_2020_TIF_JH_lpr.jpg" alt="Instagram">
+            </div>
+            <div class="instagram-item fade-in">
+                <img src="https://studiomuseum.imgix.net/images/couple-1a.jpg?auto=format,compress&fit=max&w=4040" alt="Instagram">
+            </div>
+            <div class="instagram-item fade-in">
+                <img src="https://s3.us-east-1.amazonaws.com/bomb-images/_hiresolution/913604861-09082016-njideka-akunyili-crosby-01-bomb-137.jpg" alt="Instagram">
+            </div>
+            <div class="instagram-item fade-in">
+                <img src="https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=400" alt="Instagram">
+            </div>
+            <div class="instagram-item fade-in">
+                <img src="https://thumbs.dreamstime.com/b/world-bansky-exhibition-paris-graffiti-art-bansky-graffiti-art-world-bansky-155375632.jpg" alt="Instagram">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About</h3>
+                <ul class="footer-links">
+                    <li><a href="#">The Louvre in France</a></li>
+                    <li><a href="#">Visitor Rules</a></li>
+                    <li><a href="#">Loans & Long-term Loans</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Our Websites</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Online Ticketing</a></li>
+                    <li><a href="#">Online Boutique</a></li>
+                    <li><a href="#">Collection</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul class="footer-links">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Jobs</a></li>
+                    <li><a href="#">Private Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <!-- CHANGE 3: Legal Notice, Privacy Policy, Cookies are now clickable anchor links -->
+            <p>&copy; 2026 Musée du Louvre. All rights reserved.
+                &nbsp;·&nbsp;
+                <a href="#" class="footer-legal-link">Legal Notice</a>
+                &nbsp;·&nbsp;
+                <a href="#" class="footer-legal-link">Privacy Policy</a>
+                &nbsp;·&nbsp;
+                <a href="#" class="footer-legal-link">Cookies</a>
+            </p>
+        </div>
     </footer>
+
     
-    <!-- Load additional JS scripts here -->
-    <script type="text/javascript" src="script.js"></script>
-    
-  </body>
 </html>
