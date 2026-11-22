@@ -1,50 +1,521 @@
-/* Start of navigation bar (CSS) */
+:root {
+            --primary-gold: #B8985F;
+            --deep-navy: #1a1d29;
+            --soft-cream: #FAF8F3;
+            --warm-grey: #58555C;
+            --accent-burgundy: #8B3A3A;
+        }
 
-#mainNavTitle{
-height: 80px;
-background-color: black;
-color: white;
-font-weight: 500;
-font-size: larger;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-#mainNav {
-  background-color: black !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
-}
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--deep-navy);
+            background: var(--soft-cream);
+            overflow-x: hidden;
+        }
 
-#mainNav .nav-link,
-#mainNav .navbar-brand {
-  color: white !important;
-}
-/* End of navigation bar */
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 248, 243, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(184, 152, 95, 0.2);
+        }
 
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-/* Start of main layout */
-main {
-  margin-bottom: clamp(2rem, 5vw, 5rem);
-/* 
-2rem → minimum value (small screen)
-5vw → fluid value (proportional to screen width)
-5rem → maximum value (large screen)
-*/
-}
-/* End of main layout spacing */
+        /* CHANGE 1: Logo is now a clickable anchor that scrolls to top */
+        .logo {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--deep-navy);
+            letter-spacing: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
 
+        .logo:hover {
+            color: var(--primary-gold);
+        }
 
-/* Start of footer styling */
-footer {
-  background-color: black;
-  color: white;
-}
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
 
+        .nav-links a {
+            text-decoration: none;
+            color: var(--warm-grey);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
 
-footer a,
-footer .text-muted {
-  color: rgba(255, 255, 255, 0.6) !important;
-}
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary-gold);
+            transition: width 0.3s ease;
+        }
 
-footer a:hover {
-  color: white !important;
-}
-/* End of footer styling */
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            cursor: pointer;
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary-gold);
+            color: white;
+            border: 1px solid var(--primary-gold);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--primary-gold);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--deep-navy);
+            border: 1px solid var(--deep-navy);
+        }
+
+        .btn-secondary:hover {
+            background: var(--deep-navy);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 90px;
+            height: 85vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: zoomIn 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes zoomIn {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(26, 29, 41, 0.3), rgba(26, 29, 41, 0.6));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 5rem;
+            font-weight: 300;
+            letter-spacing: 6px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .museum-status {
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .museum-hours {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.5rem;
+            font-weight: 300;
+            font-style: italic;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        /* CHANGE 2: "Prepare Your Visit" now uses btn-primary style */
+        /* Both hero buttons already use .btn-primary in the HTML below */
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styling */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 6rem 3rem;
+        }
+
+        .section-title {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            color: var(--deep-navy);
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        /* Highlights Grid */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .highlight-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 4/5;
+            border-radius: 2px;
+        }
+
+        .highlight-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .highlight-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .highlight-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(26, 29, 41, 0.95), transparent);
+            color: white;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .highlight-card:hover .highlight-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .highlight-category {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .highlight-title {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-description {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+
+        /* Video Section */
+        .video-section {
+            background: var(--deep-navy);
+            color: white;
+            padding: 6rem 3rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .video-card {
+            position: relative;
+            cursor: pointer;
+            border-radius: 2px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            background-position: center;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .video-title {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .video-duration {
+            font-size: 0.8rem;
+            color: var(--primary-gold);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+            filter: grayscale(0.3);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, var(--primary-gold), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 0.1;
+        }
+
+        /* Instagram Section */
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .instagram-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .instagram-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .instagram-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-navy);
+            color: white;
+            padding: 4rem 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Bodoni Moda', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-gold);
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+            opacity: 0.6;
+        }
+
+        /* CHANGE 3: Footer legal links styled as clickable anchors */
+        .footer-legal-link {
+            color: inherit;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 1px;
+        }
+
+        .footer-legal-link:hover {
+            opacity: 1;
+            color: var(--primary-gold);
+            border-bottom-color: var(--primary-gold);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .highlights-grid,
+            .gallery,
+            .instagram-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
